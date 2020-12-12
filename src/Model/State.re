@@ -503,6 +503,7 @@ let initial =
     Feature_Configuration.initial(
       ~getUserSettings,
       [
+        Feature_Workspace.Contributions.configuration,
         Feature_AutoUpdate.Contributions.configuration,
         Feature_Buffers.Contributions.configuration,
         Feature_Editor.Contributions.configuration,
