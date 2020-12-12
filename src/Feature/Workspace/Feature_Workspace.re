@@ -121,6 +121,20 @@ module Commands = {
       : [openFolder, closeFolder];
 };
 
+module Configuration = {
+  open Config.Schema;
+
+  let workspaceRootsCodec =
+    custom(
+      ~decode=Json.Decode.(list(string)),
+      ~encode=Json.Encode.(list(string)),
+    );
+
+  let workspaceRoots =
+    setting("workspace.projectRoots", workspaceRootsCodec, ~default=[]);
+};
+
 module Contributions = {
   let commands = model => Commands.all(model);
+  let configuration = [Configuration.workspaceRoots.spec];
 };
